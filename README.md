@@ -1,4 +1,4 @@
-#Simple Shell Script to install <package> on ubuntu
+# Simple Shell Script to install <package> on ubuntu
 
 ## Packages' Lineup
 Ansible
@@ -20,18 +20,18 @@ if you have to type pasword as typing "sudo command";
 
 ## How To Run This Scipt
 ### Case 1 You have to install Ansible ASSP
-bash install_ansible.sh
+bash install_<package name>_ubuntu.sh
 
 ### Case 2 You want to display logs as running this script
 mkdir -p $HOME/install/log
 touch $HOME/install/log/stdout.log $HOME/install/log/stderr.log
-bash install_ansible.sh 2>$HOME/install/log/stderr.log
+bash install_<package name>_ubuntu.sh 2>$HOME/install/log/stderr.log
 
 
 ### Case 3 You have to automatically install Ansible
 mkdir -p $HOME/install/log
 touch $HOME/install/log/stdout.log $HOME/install/log/stderr.log
-bash install_ansible_ubuntu.sh 1>$HOME/install/log/stdout.log 2>$HOME/install/log/stderr.log
+bash install_<package name>_ubuntu.sh 1>$HOME/install/log/stdout.log 2>$HOME/install/log/stderr.log
 
 
 ## Notes
