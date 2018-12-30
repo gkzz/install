@@ -2,6 +2,7 @@
 
 ## Packages' Lineup
 Ansible
+
 Dcoker
 
 (
@@ -14,7 +15,7 @@ Type commands bellow, and add this frase to the end,
 if you have to type pasword as typing "sudo command";
 
 <remote server, general user> $ sudo visudo
-# add to the end 
+#add to the end 
 <general user's name> ALL=NOPASSWD: ALL
 
 
