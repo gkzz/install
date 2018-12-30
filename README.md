@@ -2,11 +2,11 @@
 
 ## Packages' Lineup
 Ansible
+Dcoker
 
 (
-    In the near future, 
-    Dcoker, 
-    Python
+    In the near future,  
+    Python3.6 on the Docker
 )
 
 ## To Do Before Run This Script
