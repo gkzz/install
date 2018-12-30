@@ -2,12 +2,13 @@
 
 ########################################################################################
 # Sources;
-# Latest Releases via Apt (Ubuntu) Ansible Documentation
-# https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-via-apt-ubuntu
+# Get Docker CE for Ubuntu | Docker Documentation
+# https://docs.docker.com/install/linux/docker-ce/ubuntu/#upgrade-docker-ce
 ########################################################################################
 
 startTime=$(date '+%d/%m/%Y %H:%M:%S');
 #SECONDS=0
+
 
 workingDirectory=$HOME'/install'
 
@@ -51,17 +52,31 @@ saved_stdout_startTime(){
 
 ###### 1-4. saved_stdout_endTime()
 saved_stdout_endTime(){
-    ansible --version
+    docker --version
     echo -e "$1\n$2\n$3" | tee $workingDirectory/log/stdout.log 
 }
 
-###### 1-5. main()
-######### Install Ansible
+###### 1-5 main()
+######### Install Docker
 main(){
-    sudo apt-get remove ansible -y
-    sudo apt-get install software-properties-common -y | tee $workingDirectory/log/stdout.log
-    sudo apt-add-repository --yes --update ppa:ansible/ansible | tee $workingDirectory/log/stdout.log
-    sudo apt-get install ansible -y | tee $workingDirectory/log/stdout.log
+    sudo apt-get purge docker-ce -y
+    sudo rm -rf /var/lib/docker
+    sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    sudo apt-key fingerprint 0EBFCD88 -y
+    # pub   4096R/0EBFCD88 2017-02-22
+    #       Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+    # uid                  Docker Release (CE deb) <docker@docker.com>
+    # sub   4096R/F273FCD8 2017-02-22
+    sudo add-apt-repository -y \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+    sudo apt-get install docker-ce -y
 }
 
 
@@ -79,17 +94,17 @@ else
     type_tags_only
 fi
 
-if ! type ansible >/dev/null 2>&1; then
+if ! docker --version >/dev/null 2>&1; then
     main
     endTime=$(date '+%d/%m/%Y %H:%M:%S'); 
     runTime=$((end_time - start_time));
     type_tags_only 
-    saved_stdout_endTime "startTime: $startTime" "endTime: $endTime" "You have finished installing ansible in $runTime seconds!"
+    saved_stdout_endTime "startTime: $startTime" "endTime: $endTime" "You have finished installing docker in $runTime seconds!"
     type_tags_only
 else
     endTime=$(date '+%d/%m/%Y %H:%M:%S');
     type_tags_only 
-    saved_stdout_endTime "startTime: $startTime" " endTime: $endTime" "You already have instaled ansible."
+    saved_stdout_endTime "startTime: $startTime" " endTime: $endTime" "You already have instaled docker."
 fi
 
 

@@ -39,3 +39,6 @@ DISTRIB_ID=Ubuntu
 DISTRIB_RELEASE=16.04
 DISTRIB_CODENAME=xenial
 DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS" (Sakura VPS)
+
+## If You're Faced with Some Troubles...
+plz give me comments!
