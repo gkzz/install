@@ -56,7 +56,7 @@ saved_stdout_endTime(){
     echo -e "$1\n$2\n$3" | tee $workingDirectory/log/stdout.log 
 }
 
-###### 1-5 main()
+###### 1-5. main()
 ######### Install Docker
 main(){
     sudo apt-get purge docker-ce -y

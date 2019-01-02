@@ -5,10 +5,7 @@ Ansible
 
 Dcoker
 
-(
-    In the near future,  
-    Python3.6 on the Docker
-)
+python3.6
 
 ## To Do Before Run This Script
 Type commands bellow, and add this frase to the end,
